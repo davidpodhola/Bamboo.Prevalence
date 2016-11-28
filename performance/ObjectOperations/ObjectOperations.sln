@@ -1,21 +1,21 @@
-Microsoft Visual Studio Solution File, Format Version 7.00
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOperations", "ObjectOperations.csproj", "{D3ED78AB-5EA6-438A-BEC7-CC9F396DBB22}"
 EndProject
 Global
-	GlobalSection(SolutionConfiguration) = preSolution
-		ConfigName.0 = Debug
-		ConfigName.1 = Release
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectDependencies) = postSolution
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3ED78AB-5EA6-438A-BEC7-CC9F396DBB22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3ED78AB-5EA6-438A-BEC7-CC9F396DBB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3ED78AB-5EA6-438A-BEC7-CC9F396DBB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3ED78AB-5EA6-438A-BEC7-CC9F396DBB22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectConfiguration) = postSolution
-		{D3ED78AB-5EA6-438A-BEC7-CC9F396DBB22}.Debug.ActiveCfg = Debug|.NET
-		{D3ED78AB-5EA6-438A-BEC7-CC9F396DBB22}.Debug.Build.0 = Debug|.NET
-		{D3ED78AB-5EA6-438A-BEC7-CC9F396DBB22}.Release.ActiveCfg = Release|.NET
-		{D3ED78AB-5EA6-438A-BEC7-CC9F396DBB22}.Release.Build.0 = Release|.NET
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-	EndGlobalSection
-	GlobalSection(ExtensibilityAddIns) = postSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
