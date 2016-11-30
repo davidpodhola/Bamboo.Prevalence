@@ -26,6 +26,8 @@ type ToDoList() =
 
 [<EntryPoint>]
 let main argv = 
+    System.Threading.ThreadPool.SetMaxThreads( 100, 100 ) |> ignore
+
     let prevalenceBase = Path.Combine(Environment.CurrentDirectory, "data");
 
     let _engine = PrevalenceActivator.CreateTransparentEngine(typeof<ToDoList>, prevalenceBase);
@@ -44,7 +46,7 @@ let main argv =
         s.ToLower().Chars(0)
 
     let UserChoice () =
-        Prompt "(A)dd task\t(D)one with task\t(S)napshot\t(Q)uit" |> firstLowerChar
+        Prompt "(A)dd task\t(D)one with task\t(S)napshot\t(Q)uit\t(P)rint\t(T)est" |> firstLowerChar
 
     let DisplayUserMenu () =
         match UserChoice() with
@@ -64,6 +66,9 @@ let main argv =
                     let task : Task = { ID=0; Summary=i.ToString(); Done=true; DateCreated=DateTime.MinValue } 
                     _system.AddTask task
                 } |> Async.Start
+            false
+        | 'p' -> 
+            ShowPendingTasks()
             false
 
     let mutable quit = false
