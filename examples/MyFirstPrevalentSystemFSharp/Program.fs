@@ -17,8 +17,12 @@ type ToDoList() =
     member this.AddTask (task:Task) =
         _nextTaskID <- _nextTaskID + 1
         _tasks.Add(_nextTaskID, {task with ID=_nextTaskID; DateCreated=PrevalenceEngine.Now} )
+    member this.UpdateTask (task:Task) =
+        _tasks.Item(task.ID) <- task
     member this.PendingTasks () =
         _tasks.Values |> Seq.cast<Task> |> Seq.where( fun p -> not p.Done ) 
+    member this.LastTaskId () =
+        _nextTaskID
 
 [<EntryPoint>]
 let main argv = 
@@ -34,6 +38,7 @@ let main argv =
     let ShowPendingTasks () =
         printfn "ID\tDate Created\t\tSummary"
         _system.PendingTasks() |> Seq.iter( fun p -> printfn "%d\t%s" p.ID p.Summary )
+        printfn "LastTaskId:%d" (_system.LastTaskId())
 
     let firstLowerChar (s:string) =
         s.ToLower().Chars(0)
@@ -50,6 +55,16 @@ let main argv =
             _system.AddTask task
             false
         | 'q' ->  true
+        | 's' -> 
+            _engine.TakeSnapshot()
+            false
+        | 't' -> 
+            for i in [1..100000] do
+                async {
+                    let task : Task = { ID=0; Summary=i.ToString(); Done=true; DateCreated=DateTime.MinValue } 
+                    _system.AddTask task
+                } |> Async.Start
+            false
 
     let mutable quit = false
 
